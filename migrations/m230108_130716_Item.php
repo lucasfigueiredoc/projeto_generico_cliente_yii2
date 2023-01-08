@@ -3,21 +3,22 @@
 use yii\db\Migration;
 
 /**
- * Class m230108_020916_Usuario
+ * Class m230108_130716_Item
  */
-class m230108_020916_Usuario extends Migration
+class m230108_130716_Item extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('Usuario',[
-            'nome' => $this->string()->notNull(),
-            'id_usuario' => $this->primaryKey(),
-            'telefone' => $this->char()
-
+        $this->createTable('Item',[
+            'id_item' =>  $this->primaryKey(),
+            'valor' => $this->integer()->notNull(),
+            'nome' => $this->integer()->notNull(),
+            'descricao' => $this->string()
         ]);
+
 
     }
 
@@ -26,8 +27,8 @@ class m230108_020916_Usuario extends Migration
      */
     public function safeDown()
     {
-       $this->dropTable('Usuario');
-        return false;
+        $this->dropTable('Item');
+
     }
 
     /*
@@ -39,7 +40,7 @@ class m230108_020916_Usuario extends Migration
 
     public function down()
     {
-        echo "m230108_020916_Usuario cannot be reverted.\n";
+        echo "m230108_130716_Item cannot be reverted.\n";
 
         return false;
     }

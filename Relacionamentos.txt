@@ -1,7 +1,8 @@
-Usuario(Nome,Id_usuario)
-Usuario_Cliente(Id_usuario_fk, endereco)
-Usuario_Colaborador(id_usuario_fk,codigo)
+Usuario(Nome,Id_usuario,telefone)
+Usuario_Cliente(Id_usuario_fk, endereco_fk)
+Usuario_Colaborador(id_usuario_fk,codigo,senha,login)
+endereco(id_endereco,CEP,rua,bairro,cidade,estado)
 
 Pedido(id_pedido,id_usuario_colaborador_fk,id_usuario_cliente_fk,id_pedido_fk,descricao,data)
 
-item(id_item,valor_porKG)
+item(id_item,valor_porKG,nome,descricao)
