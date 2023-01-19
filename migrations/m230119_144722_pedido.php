@@ -12,6 +12,34 @@ class m230119_144722_pedido extends Migration
      */
     public function safeUp()
     {
+        $this->createTable('pedido',[
+            'id_pedido' => $this->primaryKey(),
+            'fk_usuario_colaborador' => $this->integer()->notNull(),
+            'fk_usuario_cliente' => $this->integer()->notNull(),
+            'descricao' =>  $this->string(),
+            'data' => $this->date()          
+
+        ]);
+
+
+        $this->addForeignKey(
+            'fk_cliente_id',
+            'pedido',
+            'fk_usuario_cliente',
+            'usuario_cliente',
+            'id_cliente',
+            'RESTRICT'
+
+        );
+        $this->addForeignKey(
+            'fk_colaborador_fk',
+            'pedido',
+            'fk_usuario_colaborador',
+            'usuario_colaborador',
+            'id_colaborador',
+            'RESTRICT'
+
+        );
 
     }
 
@@ -20,9 +48,16 @@ class m230119_144722_pedido extends Migration
      */
     public function safeDown()
     {
-        echo "m230119_144722_pedido cannot be reverted.\n";
+        $this->dropForeinKey(
+            'fk_cliente_id',
+            'pedido'
+        );
 
-        return false;
+        $this->dropForeinKey(
+            'fk_colaborador_fk',
+            'pedido'
+        );
+        $this->dropTable('pedido');
     }
 
     /*
